@@ -222,7 +222,7 @@ class ReviewControllerTest extends AbstractWebTestCase
             $Product = $this->productRepo->find($product);
         }
 
-        $Display = $this->productStatusRepo->find(ProductStatus::DISPLAY_SHOW);
+        $Display = $this->productStatusRepo->find(ProductStatus::SHOW);
         $Sex = $this->sexMasterRepo->find(1);
         $Customer = $this->createCustomer();
 
