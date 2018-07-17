@@ -53,8 +53,8 @@ class ProductReviewConfigControllerTest extends AbstractAdminWebTestCase
 
         $this->assertTrue($client->getResponse()->isSuccessful());
 
-        $min = $this->eccubeConfig['product_review_regist_min'];
-        $max = $this->eccubeConfig['product_review_regist_max'];
+        $min = $this->eccubeConfig['product_review_display_count_min'];
+        $max = $this->eccubeConfig['product_review_display_count_max'];
         $this->assertContains('レビューの表示件数('.$min.'～'.$max.')', $crawler->html());
     }
 
@@ -63,7 +63,7 @@ class ProductReviewConfigControllerTest extends AbstractAdminWebTestCase
      */
     public function testMin()
     {
-        $min = $this->eccubeConfig['product_review_regist_min'];
+        $min = $this->eccubeConfig['product_review_display_count_min'];
         /**
          * @var Client
          */
@@ -88,7 +88,7 @@ class ProductReviewConfigControllerTest extends AbstractAdminWebTestCase
      */
     public function testMax()
     {
-        $max = $this->eccubeConfig['product_review_regist_max'];
+        $max = $this->eccubeConfig['product_review_display_count_max'];
         /**
          * @var Client
          */
@@ -113,8 +113,8 @@ class ProductReviewConfigControllerTest extends AbstractAdminWebTestCase
      */
     public function testSuccess()
     {
-        $min = $this->eccubeConfig['product_review_regist_min'];
-        $max = $this->eccubeConfig['product_review_regist_max'];
+        $min = $this->eccubeConfig['product_review_display_count_min'];
+        $max = $this->eccubeConfig['product_review_display_count_max'];
         /**
          * @var Client
          */
