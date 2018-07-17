@@ -77,7 +77,7 @@ class ReviewAdminControllerTest extends AbstractAdminWebTestCase
     {
         $number = 5;
         $this->createProductReviewByNumber($number);
-        $crawler = $this->client->request('GET', $this->generateUrl('plugin_admin_product_review'));
+        $crawler = $this->client->request('GET', $this->generateUrl('product_review_admin_product_review'));
         $this->assertContains('商品レビュー', $crawler->html());
         $form = $crawler->selectButton('検索')->form();
         $crawlerSearch = $this->client->submit($form);
@@ -97,7 +97,7 @@ class ReviewAdminControllerTest extends AbstractAdminWebTestCase
     public function testReviewDeleteIdNotFound()
     {
         $this->client->request('DELETE',
-            $this->generateUrl('plugin_admin_product_review_delete', ['id' => 99999])
+            $this->generateUrl('product_review_admin_product_review_delete', ['id' => 99999])
         );
 
         $this->assertEquals(404, $this->client->getResponse()->getStatusCode());
@@ -111,7 +111,7 @@ class ReviewAdminControllerTest extends AbstractAdminWebTestCase
         $Review = $this->createProductReviewData();
         $productReviewId = $Review->getId();
         $this->client->request('DELETE',
-            $this->generateUrl('plugin_admin_product_review_delete', ['id' => $productReviewId])
+            $this->generateUrl('product_review_admin_product_review_delete', ['id' => $productReviewId])
         );
         $this->assertTrue($this->client->getResponse()->isRedirection());
 
@@ -128,13 +128,13 @@ class ReviewAdminControllerTest extends AbstractAdminWebTestCase
          */
         $this->client->request(
             'GET',
-            $this->generateUrl('plugin_admin_product_review_edit', ['id' => 99999])
+            $this->generateUrl('product_review_admin_product_review_edit', ['id' => 99999])
         );
         /**
          * @var Client
          */
         $client = $this->client;
-        $this->assertTrue($client->getResponse()->isRedirect($this->generateUrl('plugin_admin_product_review')));
+        $this->assertTrue($client->getResponse()->isRedirect($this->generateUrl('product_review_admin_product_review')));
 
         $crawler = $client->followRedirect();
 
@@ -156,13 +156,13 @@ class ReviewAdminControllerTest extends AbstractAdminWebTestCase
 
         $this->client->request(
             'GET',
-            $this->generateUrl('plugin_admin_product_review_edit', ['id' => $reviewId])
+            $this->generateUrl('product_review_admin_product_review_edit', ['id' => $reviewId])
         );
         /**
          * @var Client
          */
         $client = $this->client;
-        $this->assertTrue($client->getResponse()->isRedirect($this->generateUrl('plugin_admin_product_review')));
+        $this->assertTrue($client->getResponse()->isRedirect($this->generateUrl('product_review_admin_product_review')));
 
         $crawler = $client->followRedirect();
 
@@ -182,7 +182,7 @@ class ReviewAdminControllerTest extends AbstractAdminWebTestCase
 
         $crawler = $this->client->request(
             'GET',
-            $this->generateUrl('plugin_admin_product_review_edit', ['id' => $reviewId])
+            $this->generateUrl('product_review_admin_product_review_edit', ['id' => $reviewId])
         );
         $form = $crawler->selectButton('更新')->form();
         $form['product_review[recommend_level]'] = 1;
@@ -212,7 +212,7 @@ class ReviewAdminControllerTest extends AbstractAdminWebTestCase
         $form = $this->initForm($review);
         $crawler = $this->client->request(
             'POST',
-            $this->generateUrl('plugin_admin_product_review'),
+            $this->generateUrl('product_review_admin_product_review'),
             ['product_review_search' => $form]
         );
 
@@ -234,7 +234,7 @@ class ReviewAdminControllerTest extends AbstractAdminWebTestCase
         $number = 11;
         $this->createProductReviewByNumber($number);
 
-        $crawler = $this->client->request('GET', $this->generateUrl('plugin_admin_product_review'));
+        $crawler = $this->client->request('GET', $this->generateUrl('product_review_admin_product_review'));
         $this->assertContains('検索', $crawler->html());
         $form = $crawler->selectButton('検索')->form();
         $crawlerSearch = $this->client->submit($form);
@@ -244,7 +244,7 @@ class ReviewAdminControllerTest extends AbstractAdminWebTestCase
         $this->assertContains((string) $number, $numberResult);
 
         /* @var $crawler Crawler */
-        $crawler = $this->client->request('GET', $this->generateUrl('plugin_admin_product_review_page', ['page_no' => 2]));
+        $crawler = $this->client->request('GET', $this->generateUrl('product_review_admin_product_review_page', ['page_no' => 2]));
 
         // page 2
         $paging = $crawler->filter('ul.pagination .page-item')->last();
@@ -266,7 +266,7 @@ class ReviewAdminControllerTest extends AbstractAdminWebTestCase
         $form = $this->initForm($review);
         $crawler = $this->client->request(
             'POST',
-            $this->generateUrl('plugin_admin_product_review'),
+            $this->generateUrl('product_review_admin_product_review'),
             ['product_review_search' => $form]
         );
 
@@ -284,7 +284,7 @@ class ReviewAdminControllerTest extends AbstractAdminWebTestCase
 
         $this->client->request(
             'POST',
-            $this->generateUrl('plugin_admin_product_review_download')
+            $this->generateUrl('product_review_admin_product_review_download')
         );
 
         $this->assertTrue($this->client->getResponse()->isSuccessful());

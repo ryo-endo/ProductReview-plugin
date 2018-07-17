@@ -49,7 +49,7 @@ class ProductReviewConfigControllerTest extends AbstractAdminWebTestCase
         /**
          * @var Crawler
          */
-        $crawler = $this->client->request('GET', $this->generateUrl('plugin_ProductReview_config'));
+        $crawler = $this->client->request('GET', $this->generateUrl('product_review_admin_config'));
 
         $this->assertTrue($client->getResponse()->isSuccessful());
 
@@ -71,7 +71,7 @@ class ProductReviewConfigControllerTest extends AbstractAdminWebTestCase
         /**
          * @var Crawler
          */
-        $crawler = $this->client->request('GET', $this->generateUrl('plugin_ProductReview_config'));
+        $crawler = $this->client->request('GET', $this->generateUrl('product_review_admin_config'));
 
         $this->assertTrue($client->getResponse()->isSuccessful());
 
@@ -96,7 +96,7 @@ class ProductReviewConfigControllerTest extends AbstractAdminWebTestCase
         /**
          * @var Crawler
          */
-        $crawler = $this->client->request('GET', $this->generateUrl('plugin_ProductReview_config'));
+        $crawler = $this->client->request('GET', $this->generateUrl('product_review_admin_config'));
 
         $this->assertTrue($client->getResponse()->isSuccessful());
 
@@ -122,7 +122,7 @@ class ProductReviewConfigControllerTest extends AbstractAdminWebTestCase
         /**
          * @var Crawler
          */
-        $crawler = $this->client->request('GET', $this->generateUrl('plugin_ProductReview_config'));
+        $crawler = $this->client->request('GET', $this->generateUrl('product_review_admin_config'));
 
         $this->assertTrue($client->getResponse()->isSuccessful());
 

@@ -71,7 +71,7 @@ class ReviewControllerTest extends AbstractWebTestCase
         $productId = 1;
         $crawler = $this->client->request(
             'POST',
-            $this->generateUrl('plugin_products_detail_review', ['id' => $productId]),
+            $this->generateUrl('product_review_index', ['id' => $productId]),
             [
                 'product_review' => [
                     'comment' => $this->faker->text(2999),
@@ -91,7 +91,7 @@ class ReviewControllerTest extends AbstractWebTestCase
         $form = $crawler->selectButton('送信する')->form();
         $this->client->submit($form);
 
-        $this->assertTrue($this->client->getResponse()->isRedirect($this->generateUrl('plugin_products_detail_review_complete', ['id' => $productId])));
+        $this->assertTrue($this->client->getResponse()->isRedirect($this->generateUrl('product_review_index_complete', ['id' => $productId])));
 
         // Verify back to product detail link.
         /**
@@ -123,7 +123,7 @@ class ReviewControllerTest extends AbstractWebTestCase
         ];
         $crawler = $this->client->request(
             'POST',
-            $this->generateUrl('plugin_products_detail_review', ['id' => $productId]),
+            $this->generateUrl('product_review_index', ['id' => $productId]),
             ['product_review' => $inputForm,
                 'mode' => 'confirm',
             ]
